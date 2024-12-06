@@ -18,15 +18,43 @@
             padding: 10px 20px;
             background-color: #42b983;
             color: white;
+            position: relative;
         }
         .navbar a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
             font-size: 16px;
+            position: relative;
+            cursor: pointer;
         }
         .navbar a:hover {
             text-decoration: underline;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
         .container {
             text-align: center;
@@ -57,6 +85,22 @@
         .btn:hover {
             background-color: #369a6f;
         }
+        .about-section {
+            display: none; /* Initially hidden */
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .about-section h2 {
+            color: #42b983;
+        }
+        .about-section p {
+            color: #333;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -64,8 +108,20 @@
     <div class="navbar">
         <div class="logo">Vue World</div>
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
+            <div class="dropdown">
+                <a href="#home">Home</a>
+                <div class="dropdown-content">
+                    <a href="#introduction">Introduction</a>
+                    <a href="#frameworks">Frameworks</a>
+                    <a href="#examples">Examples</a>
+                    <a href="#resources">Resources</a>
+                </div>
+            </div>
+            <a id="aboutLink">About</a>
+            <a href="#features">Features</a>
+            <a href="#tutorials">Tutorials</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#blog">Blog</a>
             <a href="#contact">Contact</a>
         </div>
     </div>
@@ -76,5 +132,24 @@
         <p>Discover the power of Vue.js and build amazing user interfaces with ease.</p>
         <a href="https://vuejs.org" class="btn" target="_blank">Get Started with Vue</a>
     </div>
+
+    <!-- About Section -->
+    <div id="aboutSection" class="about-section">
+        <h2>About Vue World</h2>
+        <p><strong>Home:</strong> Includes a dropdown menu with sections like Introduction, Frameworks, Examples, and Resources.</p>
+        <p><strong>Features:</strong> Learn about the core features of Vue.js, including its reactive data binding, components, and directives.</p>
+        <p><strong>Tutorials:</strong> Step-by-step guides to help you build applications using Vue.js, from beginner to advanced topics.</p>
+        <p><strong>Pricing:</strong> Information about plans or cost models for using Vue.js in enterprise or personal projects.</p>
+        <p><strong>Blog:</strong> Stay updated with the latest news, tips, and updates about Vue.js and its ecosystem.</p>
+        <p><strong>Contact:</strong> Reach out to the Vue World team for support, queries, or collaborations.</p>
+    </div>
+
+    <script>
+        // JavaScript to show About section
+        document.getElementById('aboutLink').addEventListener('click', function () {
+            const aboutSection = document.getElementById('aboutSection');
+            aboutSection.style.display = aboutSection.style.display === 'block' ? 'none' : 'block';
+        });
+    </script>
 </body>
 </html>
